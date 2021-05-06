@@ -1,22 +1,36 @@
-clear variables;
-close all;
+close all
 clc;
+clear variables;
 
-%1
-nue = 5000;
-[x,t,K] = SignalFonctionComposee(8,271,90/180*pi,5,1147,90/180*pi,-0.01012,0.01012,nue);
+[t, x, K] = fonction2(8 ,5, 271, 1147, 90, 90, -10.12*10^-3, 10.12*10^-3, 5000);
+
 
 plot(t,x)
 
-BorneInf = floor(length(x)/2)
-XCoupe = x(BorneInf:length(x))
+N= 512;
 
-%2
-Npoints = 512;
-nu=0:nue/(Npoints-1)*1/1000:nue*1/1000;
-X1 = fft(x,Npoints)
-subplot(1,2,1)
-plot(nu,imag(X1))
-X2 = fft(XCoupe,Npoints);
-subplot(1,2,2);
-plot(nu,imag(X2))
+zeroPadding = zeros(1, N-K);
+y = [x(floor(K/2)+1:K),zeroPadding, x(1:floor(K/2))];
+
+t_y = length(y)/nue
+
+nue = 5000;
+
+X = fft(y,N);
+figure(2);
+nu = 0:nue/N:nue-nue/N;
+subplot(221)
+plot(nu,real(X))
+title('partie réelle')
+
+subplot(222)
+plot(nu,imag(X))
+title('partie imaginaire')
+
+subplot(223)
+plot(nu,abs(X))
+title('module')
+
+subplot(224)
+plot(nu,angle(X))
+title('phase')
