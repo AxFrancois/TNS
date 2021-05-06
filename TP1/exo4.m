@@ -2,7 +2,8 @@ close all
 clc;
 clear variables;
 
-[t, x, K] = fonction2(8 ,5, 271, 1147, 90, 90, -10.12*10^-3, 10.12*10^-3, 5000);
+nue = 5000;
+[x,t,K] = SignalFonctionComposee(8,271,90*pi/180,5,1147,90*pi/180,-0.01012,0.01012,nue);
 
 
 plot(t,x)
@@ -11,10 +12,6 @@ N= 512;
 
 zeroPadding = zeros(1, N-K);
 y = [x(floor(K/2)+1:K),zeroPadding, x(1:floor(K/2))];
-
-t_y = length(y)/nue
-
-nue = 5000;
 
 X = fft(y,N);
 figure(2);
