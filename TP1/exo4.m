@@ -7,18 +7,19 @@ nue = 5000;
 
 t = t*1000;
 stem(t,x)
-xlabel('k (indices)')
+xlabel('t (ms)')
 title('x[k]')
 axis([t(1) t(end) min(x) max(x)])
 
 N= 512;
 
 zeroPadding = zeros(1, N-K);
-y = [x(floor(K/2)+1:K),zeroPadding, x(1:floor(K/2))];
+y = [x(floor(K/2)+1:K),zeroPadding, x(1:floor(K/2)+1)];
 figure(2)
 t2 = -length(y)/(2*nue):1/(nue):(length(y)-1)/(2*nue);
-plot(t2,y)
-xlabel('k (indices)')
+t2 = t2*1000;
+plot(t2,y);
+xlabel('t (ms)')
 title('y[k]')
 axis([t2(1) t2(end) min(y) max(y)])
 

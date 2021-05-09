@@ -37,7 +37,7 @@ axis([k1(1),k1(end),min(angle(X1)*180/pi),max(angle(X1)*180/pi)])
 xlabel('n (indices)')
 title('$\phi(X_1[n])$', 'interpreter','Latex')
 
-f1=0:1/(K-1):1;
+f1=0:1/K:1-1/K;
 figure(2)
 subplot(2,2,1)
 plot(f1,real(X1))
@@ -63,7 +63,7 @@ xlabel('f')
 axis([f1(1),f1(end),min(angle(X1)*180/pi),max(angle(X1)*180/pi)])
 title('$\phi(X_1[n])$', 'interpreter','Latex')
 
-nu1=0:nue/(K-1)*1/1000:nue*1/1000;
+nu1=0:nue/K*1/1000:(nue-nue/K)*1/1000;
 figure(3)
 
 subplot(2,2,1)
@@ -97,23 +97,26 @@ X2 = fft(x,Npoints);
 %5
 figure(4)
 k2=0:1:Npoints-1;
-f2=0:1/(Npoints-1):1;
-nu2=0:nue/(Npoints-1)*1/1000:nue*1/1000;
+f2=0:1/Npoints:1-1/Npoints;
+nu2=0:nue/Npoints*1/1000:(nue-nue/Npoints)*1/1000;
 
 subplot(1,3,1)
 plot(k2,abs(X2))
 xlabel('n (indices)')
 title('$|X_2[n]|$ avec N = 512', 'interpreter','Latex')
+axis([k2(1),k2(end),min(abs(X2)),max(abs(X2))])
 
 subplot(1,3,2)
 plot(f2,abs(X2))
 xlabel('f')
 title('$|X_2[n]|$ avec N = 512', 'interpreter','Latex')
+axis([f2(1),f2(end),min(abs(X2)),max(abs(X2))])
 
 subplot(1,3,3)
 plot(nu2,abs(X2))
 xlabel('\nu (khz)')
 title('$|X_2[n]|$ avec N = 512', 'interpreter','Latex')
+axis([nu2(1),nu2(end),min(abs(X2)),max(abs(X2))])
 
 %6
 %Composantes maximales : x = 0.05376, 0.2366, 0.7742, 0.957
