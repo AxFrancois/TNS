@@ -1,0 +1,15 @@
+clear variables;
+close all;
+clc;
+
+%signal attribué : signal 16
+numsig = 16;
+M = 4000;
+nue = 20000;
+N = 4096;
+analysespectrale(numsig,M,nue,N)
+
+%On met la plus grande valeur d'échantillonnage possible afin de nous
+%représenter au mieux le signal. OIn peut ainsi mesurer la plus grande
+%fréquence qui compose ce signal, et donc grâce au critère de shanon, nous
+%pouvons 
