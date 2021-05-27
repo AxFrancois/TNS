@@ -1,24 +1,24 @@
 function analysespectrale(numsig,M,nue,N)
 % function analysespectrale(numsig,M,nue,N)
 % 
-% Génère M points du signal portant le numero numsig
-% de bande maximale 10 kHz constitué de 5 composantes
-% Il sera échantillonné à la fréquence nue puis affiché
+% Gï¿½nï¿½re M points du signal portant le numero numsig
+% de bande maximale 10 kHz constituï¿½ de 5 composantes
+% Il sera ï¿½chantillonnï¿½ ï¿½ la frï¿½quence nue puis affichï¿½
 %
-% dans un second temps la densité spectrale d'énergie du signal généré est calculée
-% à l'aide d'une TFD-N points
+% dans un second temps la densitï¿½ spectrale d'ï¿½nergie du signal gï¿½nï¿½rï¿½ est calculï¿½e
+% ï¿½ l'aide d'une TFD-N points
 %
-% variables d'entrée
-%       numsig : numéro du signal affecté par l'intervenant en début de
-%                séance
-%		M :	nombre d'échantillons du signal
+% variables d'entrï¿½e
+%       numsig : numï¿½ro du signal affectï¿½ par l'intervenant en dï¿½but de
+%                sï¿½ance
+%		M :	nombre d'ï¿½chantillons du signal
 %				peut prendre les valeurs 125 250 500 1000 2000 4000
-%		nue :	fréquence d'échantillonnage
-%				doit être un multiple de 2000 compris entre 2000 et 20000 Hz
-%       N : nombre de points de la TFD utilisé pour calculer la densité spectrale
-%               doit être une puissance de 2
+%		nue :	frï¿½quence d'ï¿½chantillonnage
+%				doit ï¿½tre un multiple de 2000 compris entre 2000 et 20000 Hz
+%       N : nombre de points de la TFD utilisï¿½ pour calculer la densitï¿½ spectrale
+%               doit ï¿½tre une puissance de 2
 %
-% développé par N. Gache mai 2016
+% dï¿½veloppï¿½ par N. Gache mai 2016
 
 %close all
 [s,t,OK]=gene(numsig,M,nue);
@@ -27,23 +27,23 @@ if OK==1
     figure(numsig)
     subplot(2,1,1)
     plot(t*1000,s)
-    title(['\its\rm(\itt\rm) echantillonné à \nue = ',num2str(nue/1000),' kHz sur une durée de ',num2str(T*1000),' ms, soit ',num2str(M),' échantillons']);
+    title(['\its\rm(\itt\rm) echantillonnÃ© Ã  \nue = ',num2str(nue/1000),' kHz sur une durÃ©e de ',num2str(T*1000),' ms, soit ',num2str(M),' Ã©chantillons']);
     xlabel('\itt\rm en millisecondes')
     axis([0 t(M)*1000 -Inf +Inf])
     % test du nombre de points de TFD
     n=nextpow2(N);
     N2=2^n;
     if N~=N2
-        disp('N doit être une puissance de 2 : la DSE ne peut pas être calculée')
+        disp('N doit ï¿½tre une puissance de 2 : la DSE ne peut pas ï¿½tre calculï¿½e')
     elseif N<M
-        disp('N doit être au moins égal à M : la DSE ne peut pas être calculée')
+        disp('N doit ï¿½tre au moins ï¿½gal ï¿½ M : la DSE ne peut pas ï¿½tre calculï¿½e')
     else
         sp=abs(fft(s,N));
         sp=sp(1:N/2).^2; 
         nu=(0:N/2-1)*nue/N;
         subplot(2,1,2)
         plot(nu/1000,sp)
-        title(['\Gamma\it_s\rm(\nu) calculé sur ',num2str(N),' points'])
+        title(['\Gamma\it_s\rm(\nu) calculÃ© sur ',num2str(N),' points'])
         xlabel('\nu en kHz')
         axis([0 nue/2/1000 0 +inf])
         grid
@@ -54,36 +54,36 @@ end
 function [s,t,OK]=gene(numsig,M,nue)
 % function [s,t,OK]=gene(numsig,M,nue);
 % 
-% Génère M points du signal portant le numero numsig
-% de bande maximale 10 kHz constitué de 5 composantes
-% Il sera échantillonné à la fréquence nue
+% Gï¿½nï¿½re M points du signal portant le numero numsig
+% de bande maximale 10 kHz constituï¿½ de 5 composantes
+% Il sera ï¿½chantillonnï¿½ ï¿½ la frï¿½quence nue
 %
-% variables d'entrée
-%       numsig : numéro du signal affecté par l'intervenant en début de
-%                séance
-%		M :	nombre d'échantillons du signal
+% variables d'entrï¿½e
+%       numsig : numï¿½ro du signal affectï¿½ par l'intervenant en dï¿½but de
+%                sï¿½ance
+%		M :	nombre d'ï¿½chantillons du signal
 %				peut prendre les valeurs 125 250 500 1000 2000 4000
-%		nue :	fréquence d'échantillonnage
-%				doit être un multiple de 2000 compris entre 2000 et 20000 Hz
+%		nue :	frï¿½quence d'ï¿½chantillonnage
+%				doit ï¿½tre un multiple de 2000 compris entre 2000 et 20000 Hz
 % 
 % variables de sortie
-%		s :	séquence des M échantillons du signal
-%		t :	séquence telle que t=k*Te, k=0,...,M-1
-%       OK = 1 si la génération s'est bien déroulée
+%		s :	sï¿½quence des M ï¿½chantillons du signal
+%		t :	sï¿½quence telle que t=k*Te, k=0,...,M-1
+%       OK = 1 si la gï¿½nï¿½ration s'est bien dï¿½roulï¿½e
 
-% test de la fréquence d'échantillonnage
+% test de la frï¿½quence d'ï¿½chantillonnage
 tnue=nue/2000;
 if (tnue~=fix(tnue))|(nue<2000) |(nue>20000)
-   disp('Le système d''acquisition ne fonctionne pas')
-   disp('avec cette fréquence d''échantillonnage')
+   disp('Le systï¿½me d''acquisition ne fonctionne pas')
+   disp('avec cette frï¿½quence d''ï¿½chantillonnage')
    if nue<2000
-      disp([num2str(nue),' Hz est une fréquence trop faible'])
+      disp([num2str(nue),' Hz est une frï¿½quence trop faible'])
    end
    if nue>20000
-      disp([num2str(nue),' Hz est une fréquence trop élevée'])
+      disp([num2str(nue),' Hz est une frï¿½quence trop ï¿½levï¿½e'])
    end
    if (tnue~=fix(tnue))
-      disp('La fréquence doit être un multiple de 2000 Hz')
+      disp('La frï¿½quence doit ï¿½tre un multiple de 2000 Hz')
    end
    s=[];t=[];
    OK=0;
@@ -92,26 +92,26 @@ else
    Mvalide=[125 250 500 1000 2000 4000];
    k=find(M==Mvalide);
    if isempty(k)==1
-      disp(['M = ',num2str(M),' ne fait pas partie des valeurs possibles pour le nombre d''échantillons'])
+      disp(['M = ',num2str(M),' ne fait pas partie des valeurs possibles pour le nombre d''ï¿½chantillons'])
       s=[];t=[];
       OK=0;
    else
-      % récupération de tout le fichier
+      % rï¿½cupï¿½ration de tout le fichier
       eval(['load sig',num2str(numsig)]);
-      % élaboration du vecteur temps
+      % ï¿½laboration du vecteur temps
       t=(0:M-1)/nue;
       Mvar=[125 250 500 1000 2000 4000];
       colonne=find(Mvar==M);
       ligne=nue/2000;
       indice=0;
-      % il y a 10 séquences possibles pour 10 nue possibles
+      % il y a 10 sï¿½quences possibles pour 10 nue possibles
       if colonne~=1
          indice=10*sum(Mvar(1:colonne-1));
       end;
       indice=indice+(ligne-1)*Mvar(colonne)+1;
       s=x(indice:indice+M-1);
       clear x
-      disp(['La durée de signal généré est de ',num2str(t(M)),' secondes']);
+      disp(['La durï¿½e de signal gï¿½nï¿½rï¿½ est de ',num2str(t(M)),' secondes']);
       OK=1;
    end
 end
