@@ -6,8 +6,6 @@ clc;
 nue = 5000;
 [x,t,K] = SignalFonctionComposee(8,271,25/180*pi,5,1147,38/180*pi,0,0.01841,nue);
 
-
-
 % 2
 
 X1 = fft(x,K);
