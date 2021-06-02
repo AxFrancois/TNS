@@ -4,9 +4,9 @@ clc;
 
 %signal attribué : signal 16
 numsig = 16;
-M = 4000;
-nue = 20000;
-N = 4096;
+% M = 4000;
+% nue = 20000;
+% N = 4096;
 
 %On met la plus grande valeur d'échantillonnage possible afin de nous
 %représenter au mieux le signal. OIn peut ainsi mesurer la plus grande
@@ -15,16 +15,16 @@ N = 4096;
 %la plus élévé est de 2,716 kHz, nousz choisissons donc une fréquence au
 %moins 2 fois supérieur à cette dernière. Nous prenons donc nue = 6000 Hz
 
-%M = 4000;
-%nue = 6000;
-%N = 4096;
+% M = 4000;
+% nue = 6000;
+% N = 4096;
 
 %nue étant à préent fixé, nous devons choisir la valeur de n tel que
 %nue/N<3. Ainsi, il vient N > 2000 = 2048 (plus proche valeur)
 
-%M = 4000;
-%nue = 6000;
-%N = 2048;
+% M = 4000;
+% nue = 6000;
+% N = 2048;
 
 %A présent il nous faut choisir M. on sais que pour obtenir une TFD
 %correcte il faut N >= M, donc M <= 2048

@@ -3,8 +3,8 @@ close all;
 clc;
 
 %1, 2 et 3
-M = 12;
-CreationSequence(M)
+% M = 12;
+% CreationSequence(M)
 
 %4
 %{
@@ -16,6 +16,6 @@ sont pas centré en zéro.
 % M = 5;
 % CreationSequence(M)
 % 
-% M = 40;
-% CreationSequence(M)
+M = 40;
+CreationSequence(M)
 
