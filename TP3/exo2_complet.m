@@ -121,12 +121,15 @@ title('densité spectrale signal filtré','FontSize', 12, 'FontName','times')
 xlabel('f')
 
 % fréquence à conserver intact
-f4 = 2949/nue;
-
-p1 = exp(2*i*pi*f4);
+f4 = 3400/nue;
+f5 = 6800/nue;
+p1 = 0.92*exp(2*i*pi*f4);
 p1conj = conj(p1);
 
-pole = [p1,p1conj];
+p2 = 0.90*exp(2*i*pi*f5);
+p2conj = conj(p2);
+
+pole = [p1,p1conj,p2,p2conj];
 
 am = poly(pole);
 
@@ -139,10 +142,29 @@ h_corr = bl*eval_pole/eval_zeros;
 
 figure(4)
 
-zplane(bl,am)
+
 
 figure(5)
+[H,w] = freqz(bl,am,n,nue);
+subplot(221)
+zplane(bl,am)
+title('diagramme pôle-zéros','FontSize', 12, 'FontName','times')
 
+subplot(222)
+hold on
+stem(0:1:4,am)
+stem(0:1:5,bl)
+title('réponse impulsionnelle','FontSize', 12, 'FontName','times')
+legend('pôle','zéros')
+subplot(223)
+plot(w,20*log10(abs(H)))
+title('module du gain complexe en dB','FontSize', 12, 'FontName','times')
+
+subplot(224)
+plot(w,unwrap(angle(H)))
+title('phase du gain complexe','FontSize', 12, 'FontName','times')
+
+figure(6)
 y = filter(h_corr,am,x);
 Y = abs(fft(y,n)).^2;
 % plot(t,y)
