@@ -172,3 +172,23 @@ plot(f,Y)
 axis([0,10000,-Inf,+Inf])
 title('densité spectrale signal filtré corrigé')
 xlabel('f')
+
+figure(7)
+
+subplot(311)
+plot(t,s)
+axis([t(1),t(end),min(s),max(s)])
+title('signal','FontSize', 12, 'FontName','times')
+xlabel('t')
+
+subplot(312)
+plot(t,x)
+axis([t(1),t(end),min(x),max(x)])
+title('signal brouillé','FontSize', 12, 'FontName','times')
+xlabel('t')
+
+subplot(313)
+plot(t,y)
+axis([t(1),t(end),min(y),max(y)])
+title('signal filtré','FontSize', 12, 'FontName','times')
+xlabel('t')
