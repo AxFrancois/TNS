@@ -22,9 +22,9 @@ numsig = 16;
 %nue étant à préent fixé, nous devons choisir la valeur de n tel que
 %nue/N<3. Ainsi, il vient N > 2000 = 2048 (plus proche valeur)
 
-% M = 4000;
-% nue = 6000;
-% N = 2048;
+M = 4000;
+nue = 6000;
+N = 2048;
 
 %A présent il nous faut choisir M. on sais que pour obtenir une TFD
 %correcte il faut N >= M, donc M <= 2048
@@ -33,8 +33,8 @@ numsig = 16;
 %donc le nombre de point M jusqu'à ce que les 2 pics ne soient plus
 %discernable, et on prendra la valeur précédente. On trouve M = 500 
 
-M = 1000; %500 ok mais pas beau
-nue = 6000;
-N = 2048;
+% M = 1000; %500 ok mais pas beau
+% nue = 6000;
+% N = 2048;
 
 analysespectrale(numsig,M,nue,N)

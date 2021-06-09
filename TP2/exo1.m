@@ -13,9 +13,9 @@ sont pas centré en zéro.
 
 %}
 %5
-% M = 5;
-% CreationSequence(M)
-% 
-M = 40;
+M = 5;
 CreationSequence(M)
+% % M = 40;
+% CreationSequence(M)
+
 
