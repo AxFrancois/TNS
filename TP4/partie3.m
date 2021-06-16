@@ -61,7 +61,7 @@ hold on
 plot(f1,abs(h1))
 title('modules du gain complexe en échelle linéaire pour fenêtre rectangulaire')
 % 1 - Delta p = 0.9483
-% 1 - Delta p = 1.075
+% 1 + Delta p = 1.075
 % -delta a = -0.094
 % delta a = 0.05338
 plot(f1, ones(length(f1))*0.9483)

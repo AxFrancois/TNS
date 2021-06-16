@@ -13,7 +13,7 @@ clc;
 
 n = 7;
 Wp = 2850*2*pi;
-Rp = 2;
+Rp = 2; %1 initialement
 Rs = 80; %Rs = 60 initialement
 N= 2048;
 [b,a] = ellip(n,Rp,Rs,Wp,'s');
@@ -66,7 +66,7 @@ hold on
 plot(F,abs(H))
 title('modules du gain complexe en échelle linéaire')
 % 1 - Delta p = 0.7943
-% 1 - Delta p = 1
+% 1 + Delta p = 1
 % -delta a = -0.001
 % delta a = 0.001
 plot(F, ones(length(F))*0.7943)

@@ -18,5 +18,5 @@ sgram(s,nue,70,2)
 %[3000,6400]
 
 %un filtre RIF de type passe bas permettera de supprimer les fréquences
-%correspondantes au bruit. La fréquence d e"coupure correspond à la valeur la plus basse du bruit, donc nuec = 3000, et donc Fc =
+%correspondantes au bruit. La fréquence de coupure correspond à la valeur la plus basse du bruit, donc nuec = 3000, et donc Fc =
 %nuc/nue = 3000/16000
